@@ -169,3 +169,24 @@
 Результаты выполнения **terraform apply**
 
 ![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-1.jpg)
+
+Далее, согласно [документации](https://yandex.cloud/ru/docs/tutorials/infrastructure-management/terraform-state-storage#set-up-backend) , необходимо добавить в providers.tf секцию 
+
+  backend "s3" {
+    endpoint = "https://storage.yandexcloud.net"
+    bucket = "tfbucket"
+    region = "ru-central1"
+    key    = "tfbucket/terraform.tfstate"
+    skip_region_validation      = true
+    skip_credentials_validation = true
+    }
+	
+Задать в качестве новых переменных ACCESS_KEY и SECRET_KEY, которые будут получены в результате создания bucket.
+
+И заново инициализировать Terraform
+
+![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-5.jpg)
+
+![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-6.jpg)
+
+### 2. Создание Kubernetes кластера
