@@ -162,7 +162,7 @@
 
 Создание VPC с подсетями в разных зонах доступности
 
-[vpc.tf](https://github.com/devops_diploma/blob/main/terraform/vpc.tf)
+[vpc.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/vpc.tf)
 
 ![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-4.jpg)
 
