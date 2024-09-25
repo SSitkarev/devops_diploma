@@ -150,8 +150,22 @@
 
 Создание сервисного аккаунта
 
+[service-account.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/service-account.tf)
 
+![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-2.jpg)
 
 Подготовка backend (s3 bucket) для Terraform
 
+[tfbucket.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/tfbucket.tf)
+
+![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-3.jpg)
+
 Создание VPC с подсетями в разных зонах доступности
+
+[vpc.tf](https://github.com/devops_diploma/blob/main/terraform/vpc.tf)
+
+![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-4.jpg)
+
+Результаты выполнения terraform apply
+
+![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-1.jpg)
