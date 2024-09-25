@@ -166,6 +166,6 @@
 
 ![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-4.jpg)
 
-Результаты выполнения *terraform apply*
+Результаты выполнения **terraform apply**
 
 ![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-1.jpg)
