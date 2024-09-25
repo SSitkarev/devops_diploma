@@ -8,4 +8,4 @@
 
 # own secret vars store.
 personal.auto.tfvars
-sdkeys.tfvars
+s3keys.tfvars
