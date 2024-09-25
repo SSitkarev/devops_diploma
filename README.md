@@ -172,6 +172,7 @@
 
 Далее, согласно [документации](https://yandex.cloud/ru/docs/tutorials/infrastructure-management/terraform-state-storage#set-up-backend) , необходимо добавить в providers.tf секцию 
 
+```
   backend "s3" {
     endpoint = "https://storage.yandexcloud.net"
     bucket = "tfbucket"
@@ -180,6 +181,7 @@
     skip_region_validation      = true
     skip_credentials_validation = true
     }
+```
 	
 Задать в качестве новых переменных ACCESS_KEY и SECRET_KEY, которые будут получены в результате создания bucket.
 
