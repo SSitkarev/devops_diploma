@@ -183,9 +183,9 @@
     }
 ```
 	
-Задать в качестве новых переменных ACCESS_KEY и SECRET_KEY, которые будут получены в результате создания bucket.
+Задать в качестве новых переменных ACCESS_KEY и SECRET_KEY, которые будут получены в результате создания bucket. 
 
-И заново инициализировать Terraform
+И заново инициализировать Terraform командой *terraform init -backend-config="access_key=$ACCESS_KEY" -backend-config="secret_key=$SECRET_KEY"*
 
 ![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-5.jpg)
 
