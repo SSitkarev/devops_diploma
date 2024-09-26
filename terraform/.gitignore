@@ -11,5 +11,4 @@ personal.auto.tfvars
 s3keys
 
 # kubespray folder
-**/.kubespray/*
-.kubespray*
+kubespray/

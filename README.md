@@ -196,3 +196,9 @@
 Создание кластера из 3 нод
 
 [kube-cluster.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/kube-cluster.tf)
+
+![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-1.jpg)
+
+Доступ по ssh
+
+![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-2.jpg)
