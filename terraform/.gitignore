@@ -8,4 +8,8 @@
 
 # own secret vars store.
 personal.auto.tfvars
-s3keys.tfvars
+s3keys
+
+# kubespray folder
+**/.kubespray/*
+.kubespray*

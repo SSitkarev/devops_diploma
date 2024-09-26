@@ -9,10 +9,10 @@ resource "yandex_storage_bucket" "tfbucket" {
 # Экспорт идентификатора ключа и секретного ключа
  
 provisioner "local-exec" {
-  command = "echo ACCESS_KEY=${yandex_iam_service_account_static_access_key.terraform_service_account_key.access_key} >> s3keys.tfvars"
+  command = "echo ACCESS_KEY=${yandex_iam_service_account_static_access_key.terraform_service_account_key.access_key} >> s3keys"
 }
 
 provisioner "local-exec" {
-  command = "echo SECRET_KEY=${yandex_iam_service_account_static_access_key.terraform_service_account_key.secret_key} >> s3keys.tfvars"
+  command = "echo SECRET_KEY=${yandex_iam_service_account_static_access_key.terraform_service_account_key.secret_key} >> s3keys"
 }
 }

@@ -183,7 +183,7 @@
     }
 ```
 	
-Задать в качестве новых переменных ACCESS_KEY и SECRET_KEY, которые будут получены в результате создания bucket. 
+задать в качестве новых переменных ACCESS_KEY и SECRET_KEY, которые будут получены в результате создания bucket.
 
 И заново инициализировать Terraform командой *terraform init -backend-config="access_key=$ACCESS_KEY" -backend-config="secret_key=$SECRET_KEY"*
 
@@ -192,3 +192,7 @@
 ![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-6.jpg)
 
 ### 2. Создание Kubernetes кластера
+
+Создание кластера из 3 нод
+
+[kube-cluster.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/kube-cluster.tf)

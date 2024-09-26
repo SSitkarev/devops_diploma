@@ -63,3 +63,53 @@ variable "cidr-2" {
   default     = ["10.10.20.0/24"]
   description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
 }
+
+variable "k8s_node_os_image" {
+  type    = string
+  default = "ubuntu-2004-lts"
+}
+
+variable "k8s_node_cores" {
+  type    = number
+  default = 2
+}
+
+variable "k8s_node_memory" {
+  type    = number
+  default = 4
+}
+
+variable "k8s_node_core_fraction" {
+  type    = number
+  default = 5
+}
+
+variable "k8s_node_disk_size" {
+  type    = number
+  default = 10
+}
+
+variable "k8s_node_disk_type" {
+  type    = string
+  default = "network-hdd"
+}
+
+variable "master_count" {
+  type    = number
+  default = 1
+}
+
+variable "worker_count" {
+  type    = number
+  default = 2
+}
+
+variable "ssh_public_key" {
+  type        = string
+  default     = ""
+}
+
+variable "ssh_private_key" {
+  type        = string
+  default     = ""
+}
