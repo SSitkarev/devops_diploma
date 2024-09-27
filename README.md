@@ -224,4 +224,4 @@ ansible-playbook -i inventory/k8scluster/inventory.yaml --become --become-user=r
 
 Теперь убедимся, что кластер доступен и работает
 
-![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-4.jpg)
+![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-4-1.jpg)
