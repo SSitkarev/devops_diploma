@@ -199,6 +199,29 @@
 
 ![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-1.jpg)
 
-Доступ по ssh
+Проверка доступа по ssh с использованием ключа
 
 ![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-2.jpg)
+
+Примечание
+На ночь виртуальные машины отключал, сменились IP адреса
+
+При создании kubernetes кластера на подготовленных нодах, используем рекомендованный вариант с kubespray.
+Для этого выполним следующие действия:
+
+- Клонируем репозиторий [kubespray](https://github.com/kubernetes-sigs/kubespray.git) 
+- Создаём inventory.yaml файл для ansible при помощи terraform. Для этого создаём [ресурс](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/ansible.tf) и [шаблон](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/inventory.tftpl)
+- При помощи [документации](https://github.com/kubernetes-sigs/kubespray?tab=readme-ov-file#usage) и полученного [inventory.yaml](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/inventory.yaml), создаём kubernetes кластер
+```
+ansible-playbook -i inventory/k8scluster/inventory.yaml --become --become-user=root -u ubuntu --private-key=~/.ssh/id_ed25519 cluster.yml
+```
+
+Кластер готов
+
+![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-3.jpg)
+
+Далее для управления кластером скопируем конфиг kubernetes */etc/kubernetes/admin.conf* в папку пользователя *~/.kube/config*
+
+Теперь убедимся, что кластер доступен и работает
+
+![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-3.jpg)

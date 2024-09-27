@@ -66,7 +66,7 @@ variable "cidr-2" {
 
 variable "k8s_node_os_image" {
   type    = string
-  default = "ubuntu-2004-lts"
+  default = "ubuntu-24-04-lts"
 }
 
 variable "k8s_node_cores" {

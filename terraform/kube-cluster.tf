@@ -31,7 +31,8 @@ resource "yandex_compute_instance" "master" {
     nat       = true
   }
   metadata = {
-    ssh-keys = "ubuntu:${local.ssh-keys}"
+    user-data = data.template_file.cloud-init.rendered
+    ssh-keys = "root:${local.ssh-keys}"
     serial-port-enable = "1"
   }
 }
@@ -64,7 +65,8 @@ resource "yandex_compute_instance" "worker" {
     nat       = true
   }
   metadata = {
-    ssh-keys = "ubuntu:${local.ssh-keys}"
+    user-data = data.template_file.cloud-init.rendered
+    ssh-keys = "root:${local.ssh-keys}"
     serial-port-enable = "1"
   }
 }
