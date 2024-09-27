@@ -225,3 +225,9 @@ ansible-playbook -i inventory/k8scluster/inventory.yaml --become --become-user=r
 Теперь убедимся, что кластер доступен и работает
 
 ![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-4-1.jpg)
+
+### 3. Создание тестового приложения
+
+[Отдельный репозиторий с nginx конфигом](https://github.com/SSitkarev/diploma_site/tree/main)
+
+[Регистри с собранным docker image](https://hub.docker.com/repository/docker/ssitkarev/diploma_site/general)
