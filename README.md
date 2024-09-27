@@ -231,3 +231,5 @@ ansible-playbook -i inventory/k8scluster/inventory.yaml --become --become-user=r
 [Отдельный репозиторий с nginx конфигом](https://github.com/SSitkarev/diploma_site/tree/main)
 
 [Регистри с собранным docker image](https://hub.docker.com/repository/docker/ssitkarev/diploma_site/general)
+
+### 4. Подготовка cистемы мониторинга и деплой приложения
