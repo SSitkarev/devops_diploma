@@ -9,3 +9,7 @@
 # own secret vars store.
 personal.auto.tfvars
 s3keys
+
+# 3rd party
+kubespray/
+kube-prometheus/
