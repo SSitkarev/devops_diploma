@@ -346,7 +346,7 @@ helm upgrade --install monitoring prometheus-community/kube-prometheus-stack --c
 
 ![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-10.jpg)
 
-Jenkins так же показывает, что job прошел успешно
+Jenkins показывает, что job отработал успешно
 
 ![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-12.jpg)
 
@@ -355,3 +355,13 @@ Jenkins так же показывает, что job прошел успешно
 ![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-13.jpg)
 
 И, наконец, веб-страница отображает изменения, внесённые в **index.html**
+
+Ссылки:
+
+[Grafana](http://158.160.27.244:30000/)
+
+[Тестовое веб-приложение](http://158.160.27.244:30080/)
+
+[jenkins](http://51.250.91.155:18080/)
+
+Связка логин-пароль будет указана в комментарии к решению задания.
