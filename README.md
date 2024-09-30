@@ -236,14 +236,20 @@ ansible-playbook -i inventory/k8scluster/inventory.yaml --become --become-user=r
 
 Систему мониторинга разворачиваем с помощью helm чартов, для этого выполняем следующие шаги:
 
-- Копируем репозиторий *helm repo add prometheus-community https://prometheus-community.github.io/helm-charts*
-
-- Для того, чтобы веб интерфейс Grafana был доступен извне кластера, сохраняем локально дефолтные параметры чарта *helm show values prometheus-community/kube-prometheus-stack > helm-values.yaml*
-
+- Копируем репозиторий 
+```
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+```
+- Для того, чтобы веб интерфейс Grafana был доступен извне кластера, сохраняем локально дефолтные параметры чарта 
+```
+helm show values prometheus-community/kube-prometheus-stack > helm-values.yaml
+```
 - Вносим изменения для сервиса grafana, а именно указываем тип **type: NodePort** и значение порта **nodePort: 30000**
 
-- И выполняем развертывание с использованием измененного конфига *helm upgrade --install monitoring prometheus-community/kube-prometheus-stack --create-namespace -n monitoring -f helm-values.yaml*
-
+- И выполняем развертывание с использованием измененного конфига 
+```
+helm upgrade --install monitoring prometheus-community/kube-prometheus-stack --create-namespace -n monitoring -f helm-values.yaml
+```
 ![Задание4](https://github.com/SSitkarev/devops_diploma/blob/main/img/4-1.jpg)
 
 - Проверим доступность интерфейса Grafana и данных в нём.
@@ -254,6 +260,6 @@ ansible-playbook -i inventory/k8scluster/inventory.yaml --become --become-user=r
 
 ![Задание4](https://github.com/SSitkarev/devops_diploma/blob/main/img/4-3.jpg)
 
-Проверим доступность веб-приложения извне:
+- Проверим доступность веб-приложения извне:
 
 ![Задание4](https://github.com/SSitkarev/devops_diploma/blob/main/img/4-4.jpg)
