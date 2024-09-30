@@ -311,7 +311,7 @@ helm upgrade --install monitoring prometheus-community/kube-prometheus-stack --c
 
 ![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-4.jpg)
 
-Создадим job по шаблону freestyle project
+Создадим job по шаблону freestyle project, в качестве триггера на запуск job-а используем GitHub hook
 
 ![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-5.jpg)
 
@@ -334,7 +334,7 @@ helm upgrade --install monitoring prometheus-community/kube-prometheus-stack --c
 </html>
 ```
 
-И зафиксируем номер версии 1.2 в файле version и закоммитим изменения.
+Зафиксируем номер версии 1.2 в файле [version](https://github.com/SSitkarev/diploma_site/blob/main/version) и закоммитим изменения.
 
 В репозитории на GitHub мы видим коммит 
 
