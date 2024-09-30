@@ -356,6 +356,8 @@ Jenkins показывает, что job отработал успешно
 
 И, наконец, веб-страница отображает изменения, внесённые в **index.html**
 
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-14.jpg)
+
 Ссылки:
 
 [Grafana](http://158.160.27.244:30000/)
