@@ -228,7 +228,34 @@ ansible-playbook -i inventory/k8scluster/inventory.yaml --become --become-user=r
 
 ### 3. Создание тестового приложения
 
+Подготовим минимальный конфиг для отображения статичной веб-страницы
+```
+<html>
+    <body>
+        <h1>diploma_site</h1>
+        <img src="image.jpg"/>
+    </body>
+</html>
+```
+
+Подготовим Dockerfile
+```
+FROM nginx
+COPY site_content/ /usr/share/nginx/html/
+EXPOSE 80
+```
+Создадим отдельный репозиторий на GitHub для хранения кода
+
 [Отдельный репозиторий с nginx конфигом](https://github.com/SSitkarev/diploma_site/tree/main)
+
+Соберём docker образ 
+```
+docker build -t ssitkarev/diploma_site:1.0 .
+```
+И загрузим собранный образ в DockerHub
+```
+docker push ssitkarev/diploma_site:1.0
+```
 
 [Регистри с собранным docker image](https://hub.docker.com/repository/docker/ssitkarev/diploma_site/general)
 
