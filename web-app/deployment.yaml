@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: diploma-site
+  namespace: diploma
+  labels:
+    app: web-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: diploma-site
+        image: ssitkarev/diploma_site:1.0
+        ports:
+        - containerPort: 80
