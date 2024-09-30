@@ -301,7 +301,7 @@ helm upgrade --install monitoring prometheus-community/kube-prometheus-stack --c
 
 В ходе первоначальной настройки, нам необходимо подключить плагины **Mailer**, **Git**, **GitHub**, **Kubernetes CLI Plugin**, **Kubernetes Credentials Plugin**
 
-Далее спрячем чувствительные данные при помощи Credentials Plugin
+Далее выпустим токены для доступа к репозиториям GitHub и DockerHub и "спрячем" их значения при помощи Credentials Plugin
 
 ![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-2.jpg)
 
