@@ -10,5 +10,6 @@
 personal.auto.tfvars
 s3keys
 
-# kubespray folder
+# 3rd party
 kubespray/
+kube-prometheus/

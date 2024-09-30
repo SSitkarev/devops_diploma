@@ -290,3 +290,68 @@ helm upgrade --install monitoring prometheus-community/kube-prometheus-stack --c
 - Проверим доступность веб-приложения извне:
 
 ![Задание4](https://github.com/SSitkarev/devops_diploma/blob/main/img/4-4.jpg)
+
+### 5. Установка и настройка CI/CD
+
+В качестве CI/CD инструмента будем использовать Jenkins. Установку производим, согласно официальной [документации](https://www.jenkins.io/doc/book/installing/linux/)
+
+После установки убедимся, что веб-интерфейс доступен
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-1.jpg)
+
+В ходе первоначальной настройки, нам необходимо подключить плагины **Mailer**, **Git**, **GitHub**, **Kubernetes CLI Plugin**, **Kubernetes Credentials Plugin**
+
+Далее спрячем чувствительные данные при помощи Credentials Plugin
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-2.jpg)
+
+Выполним настройку подключения jenkins к нашему Kubernetes кластеру (в качестве Credentials использовался kubeconfig файл)
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-3.jpg)
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-4.jpg)
+
+Создадим job по шаблону freestyle project
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-5.jpg)
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-6.jpg)
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-7.jpg)
+
+В репозитории тестового приложения на GitHub добавим webhook
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-8.jpg)
+
+Теперь внесём изменения в index.html файл
+
+```
+<html>
+    <body>
+        <h1>diploma_site+pipeline</h1>
+        <img src="image.jpg"/>
+    </body>
+</html>
+```
+
+И зафиксируем номер версии 1.2 в файле version и закоммитим изменения.
+
+В репозитории на GitHub мы видим коммит 
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-9.jpg)
+
+В истории отправки webhooks так же видно, что после данного коммита, был отправлен хук, и он был успешно доставлен
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-11.jpg)
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-10.jpg)
+
+Jenkins так же показывает, что job прошел успешно
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-12.jpg)
+
+В DockerHub появилась новая версия тестового образа, номер версии совпадает с указанной при коммите
+
+![Задание5](https://github.com/SSitkarev/devops_diploma/blob/main/img/5-13.jpg)
+
+И, наконец, веб-страница отображает изменения, внесённые в **index.html**
