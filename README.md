@@ -163,6 +163,7 @@ export ACCESS_KEY="<идентификатор_ключа>"
 export SECRET_KEY="<секретный_ключ>"
 ```
 
+
 Далее переходим в директорию с кодом для создания инфраструктуры.
 
 Согласно [документации](https://yandex.cloud/ru/docs/tutorials/infrastructure-management/terraform-state-storage#set-up-backend) , необходимо добавить в providers.tf секцию 
