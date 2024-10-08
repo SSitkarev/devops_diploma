@@ -30,38 +30,14 @@ variable "vpc_name" {
   default     = "diploma-network"
 }
 
-variable "subnet-a" {
-  type        = string
-  default     = "diploma-subnet-a"
+variable "zones" {
+ type = list(string)
+ default = ["ru-central1-a", "ru-central1-b"]
 }
 
-variable "subnet-b" {
-  type        = string
-  default     = "diploma-subnet-b"
-}
-
-variable "zone-a" {
-  type        = string
-  default     = "ru-central1-a"
-  description = "https://cloud.yandex.ru/docs/overview/concepts/geo-scope"
-}
-
-variable "zone-b" {
-  type        = string
-  default     = "ru-central1-b"
-  description = "https://cloud.yandex.ru/docs/overview/concepts/geo-scope"
-}
-
-variable "cidr-1" {
-  type        = list(string)
-  default     = ["10.10.10.0/24"]
-  description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
-}
-
-variable "cidr-2" {
-  type        = list(string)
-  default     = ["10.10.20.0/24"]
-  description = "https://cloud.yandex.ru/docs/vpc/operations/subnet-create"
+variable "cidr_blocks" {
+ type = list(string)
+ default = ["10.10.10.0/24", "10.10.20.0/24"]
 }
 
 variable "k8s_node_os_image" {

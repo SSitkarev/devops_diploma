@@ -148,48 +148,50 @@
 
 ### 1. Создание облачной инфраструктуры
 
-Создание сервисного аккаунта
+Создание сервисного аккаунта и (s3 bucket) для Terraform backend
 
-[service-account.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/service-account.tf)
+[sa_bucket.tf](https://github.com/SSitkarev/devops_diploma/blob/main/sa-tfbucket/sa_bucket.tf)
 
 ![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-2.jpg)
 
-Подготовка backend (s3 bucket) для Terraform
-
-[tfbucket.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/tfbucket.tf)
-
 ![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-3.jpg)
+
+После создания бакета и статического ключа, добавим в переменные окружения идентификатор ключа и секретный ключ
+
+```
+export ACCESS_KEY="<идентификатор_ключа>"
+export SECRET_KEY="<секретный_ключ>"
+```
+
+Далее переходим в директорию с кодом для создания инфраструктуры.
+
+Согласно [документации](https://yandex.cloud/ru/docs/tutorials/infrastructure-management/terraform-state-storage#set-up-backend) , необходимо добавить в providers.tf секцию 
+
+```
+  backend "s3" {
+    endpoints = {
+      s3 = "https://storage.yandexcloud.net"
+    }
+    bucket = "tfbucket"
+    region = "ru-central1"
+    key    = "tfbucket/terraform.tfstate"
+    skip_region_validation      = true
+	skip_credentials_validation = true
+	skip_requesting_account_id  = true
+    skip_s3_checksum            = true
+    }
+}
+```
+
+Инициализируем terraform с использованием идентификатора ключа и секретного ключа
+
+![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-4.jpg)
 
 Создание VPC с подсетями в разных зонах доступности
 
 [vpc.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/vpc.tf)
 
-![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-4.jpg)
-
-Результаты выполнения **terraform apply**
-
-![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-1.jpg)
-
-Далее, согласно [документации](https://yandex.cloud/ru/docs/tutorials/infrastructure-management/terraform-state-storage#set-up-backend) , необходимо добавить в providers.tf секцию 
-
-```
-  backend "s3" {
-    endpoint = "https://storage.yandexcloud.net"
-    bucket = "tfbucket"
-    region = "ru-central1"
-    key    = "tfbucket/terraform.tfstate"
-    skip_region_validation      = true
-    skip_credentials_validation = true
-    }
-```
-	
-задать в качестве новых переменных ACCESS_KEY и SECRET_KEY, которые будут получены в результате создания bucket.
-
-И заново инициализировать Terraform командой *terraform init -backend-config="access_key=$ACCESS_KEY" -backend-config="secret_key=$SECRET_KEY"*
-
 ![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-5.jpg)
-
-![Задание1](https://github.com/SSitkarev/devops_diploma/blob/main/img/1-6.jpg)
 
 ### 2. Создание Kubernetes кластера
 
@@ -202,9 +204,6 @@
 Проверка доступа по ssh с использованием ключа
 
 ![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-2.jpg)
-
-**Примечание**
-На ночь виртуальные машины отключал, сменились IP адреса
 
 При создании kubernetes кластера на подготовленных нодах, используем рекомендованный вариант с kubespray.
 Для этого выполним следующие действия:
