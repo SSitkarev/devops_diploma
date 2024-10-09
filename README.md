@@ -202,29 +202,46 @@ export SECRET_KEY="<секретный_ключ>"
 
 ![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-1.jpg)
 
-Проверка доступа по ssh с использованием ключа
+При создании виртуальных машин NAT не использовался (у машин нет публичных адресов), поэтому для доступа к кластеру извне, создаем отдельную [машину](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/vpn.tf) и устанавливаем на неё openvpn server.
+
+В настройках VPN сервера указываем, в какие подсети необходим доступ
 
 ![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-2.jpg)
 
-При создании kubernetes кластера на подготовленных нодах, используем рекомендованный вариант с kubespray.
+Создаём в веб интерфейсе конфиг для подключения, указываем в нём внешний ip адрес openvpn-машины и копируем конфиг на рабочую машину.
+
+Подключемся к VPN серверу 
+```
+openvpn3 session-start --config client.ovpn
+```
+
+![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-3.jpg)
+
+Теперь необходимо получить доступ в интернет из приватных подсетей, для этого создадим "публичную" подсеть, таблицу маршрутизации и зароутим траффик из приватных подсетей через NAT инстанс
+
+[vpc.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/vpc.tf)
+
+[NAT инстанс](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/nat-instance.tf)
+
+При создании kubernetes кластера на подготовленных нодах, используем рекомендованный вариант с kubespray
 Для этого выполним следующие действия:
 
 - Клонируем репозиторий [kubespray](https://github.com/kubernetes-sigs/kubespray.git) 
 - Создаём inventory.yaml файл для ansible при помощи terraform. Для этого создаём [ресурс](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/ansible.tf) и [шаблон](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/inventory.tftpl)
-- При помощи [документации](https://github.com/kubernetes-sigs/kubespray?tab=readme-ov-file#usage) и полученного [inventory.yaml](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/inventory.yaml), создаём kubernetes кластер
+- При помощи [документации](https://github.com/kubernetes-sigs/kubespray?tab=readme-ov-file#usage) и полученного [inventory.yaml](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/inventory.yaml), создаём kubernetes кластер, выполнив на мастере команду 
 ```
-ansible-playbook -i inventory/k8scluster/inventory.yaml --become --become-user=root -u ubuntu --private-key=~/.ssh/id_ed25519 cluster.yml
+ansible-playbook -i kubespray/inventory/k8scluster/inventory.yaml --become --become-user=root -u ubuntu --private-key=~/.ssh/id_ed25519 cluster.yml
 ```
 
 Кластер готов
 
-![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-3.jpg)
+![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-4.jpg)
 
 Далее для управления кластером скопируем конфиг kubernetes */etc/kubernetes/admin.conf* в папку пользователя *~/.kube/config*
 
 Теперь убедимся, что кластер доступен и работает
 
-![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-4-1.jpg)
+![Задание2](https://github.com/SSitkarev/devops_diploma/blob/main/img/2-5.jpg)
 
 ### 3. Создание тестового приложения
 
