@@ -221,7 +221,7 @@ openvpn3 session-start --config client.ovpn
 
 [vpc.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/vpc.tf)
 
-[NAT инстанс](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/nat-instance.tf)
+[nat-instance.tf](https://github.com/SSitkarev/devops_diploma/blob/main/terraform/nat-instance.tf)
 
 При создании kubernetes кластера на подготовленных нодах, используем рекомендованный вариант с kubespray
 Для этого выполним следующие действия:
